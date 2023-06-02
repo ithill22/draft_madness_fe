@@ -91,4 +91,15 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+
+  # helper method for logging in via oauth
+  # config.include IntegrationSpecHelper, :type => :request
 end
+
+# Capybara.default_host = 'http://example.org'
+
+# OmniAuth.config.test_mode = true
+# OmniAuth.config.add_mock(:twitter, {
+#   :uid => '12345',
+#   :nickname => 'zapnap'
+# })
