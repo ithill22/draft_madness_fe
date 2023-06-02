@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
-  post '/auth/google_oauth2', to: 'users#create'
+  # post '/auth/google_oauth2', to: 'users#create'
+
+  get '/users/dashboard', to: 'users#dashboard'
 end
 
 # /users/dashboard

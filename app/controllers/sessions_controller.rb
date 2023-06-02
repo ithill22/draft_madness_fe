@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     # session[:user_id]=user.id
 
-    # redirect_to '/dashboard'
+    redirect_to '/users/dashboard'
 
     # require 'pry'; binding.pry
   end
