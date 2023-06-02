@@ -7,4 +7,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users, only: %i[new create]
+
+  get '/auth/:provider/callback', to: 'sessions#create'
+
+  post '/auth/google_oauth2', to: 'users#create'
 end
+
+# /users/dashboard
