@@ -8,11 +8,11 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create]
 
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'users#create'
 
   # post '/auth/google_oauth2', to: 'users#create'
 
-  get '/users/dashboard', to: 'users#dashboard'
+  get '/users/dashboard', to: 'users#show'
 end
 
 # /users/dashboard
