@@ -66,5 +66,23 @@ RSpec.describe DraftMadnessService do
         expect(user_data[:auth_token]).to be_a(String)
       end
     end
+    context 'get_all_users' do
+      it 'returns all user details', :vcr do
+        user_data
+
+        results = DraftMadnessService.new.get_all_users
+
+        expect(results).to be_a(Hash)
+        users = results[:data]
+
+        users.each do |user|
+          expect(user).to have_key(:id)
+          expect(user[:attributes]).to have_key(:name)
+          expect(user[:attributes]).to have_key(:email)
+          expect(user[:attributes]).to have_key(:auth_token)
+          expect(user[:attributes]).to have_key(:google_id)
+        end
+      end
+    end
   end
 end
