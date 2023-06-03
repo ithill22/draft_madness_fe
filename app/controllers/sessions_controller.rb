@@ -10,9 +10,7 @@ class SessionsController < ApplicationController
     # user.update(google_id: google_id, token: token)
 
     # session[:user_id]=user.id
-
+    
     redirect_to '/users/dashboard'
-
-    # require 'pry'; binding.pry
   end
 end
