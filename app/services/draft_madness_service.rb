@@ -7,6 +7,10 @@ class DraftMadnessService
     get_url("/api/v0/users/#{session_id}")
   end
 
+  def get_all_users
+    get_url('/api/v0/users')
+  end
+
   private
 
   def post_url(url, user_details)
