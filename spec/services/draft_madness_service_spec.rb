@@ -12,7 +12,7 @@ RSpec.describe DraftMadnessService do
           auth_token: 'hjgu734764g34734h347hdf7d7d6'
         }
         results = DraftMadnessService.new.register_user(user_details)
-        
+
         expect(results).to be_a(Hash)
 
         expect(results).to have_key(:data)
