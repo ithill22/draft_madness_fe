@@ -2,11 +2,13 @@ class UsersController < ApplicationController
   def new; end
 
   def create
-    DraftMadnessService.new.register_user(user_params)
-    redirect_to '/sessions#create'
+    user_details = DraftMadnessService.new.register_user(user_params)
+    redirect_to sessions_path(user_details)
   end
 
-  def show; end
+  def show
+    # @facade = UserFacade.new.user(session[:user_id])
+  end
 
   private
 
