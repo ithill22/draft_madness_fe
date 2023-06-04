@@ -24,4 +24,11 @@ RSpec.describe LeaguesFacade do
       expect(league.name).to eq("League Name")
     end
   end
+  # describe 'new_user_leagues' do
+  #   xit 'creates new user leagues for each participant chosen when creating new league', :vcr do
+  #     participants = ['3', '4', '7', '9', '8', '2']
+  #     LeaguesFacade.new.new_user_leagues(participants, 3)
+  #     # expect all user leagues count to eq 6
+  #   end
+  # end
 end
