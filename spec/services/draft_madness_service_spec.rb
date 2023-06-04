@@ -84,5 +84,34 @@ RSpec.describe DraftMadnessService do
         end
       end
     end
+    context 'create_league' do
+      it 'returns new league details', :vcr do
+        league_details = {
+          :name=>"League Name", 
+          :draft_date=>"June 25, 2023", 
+          :draft_time=>"8:30 pm", 
+          :manager_id=>2}
+        results = DraftMadnessService.new.create_league(league_details)
+      
+        expect(results).to be_a(Hash)
+
+        expect(results).to have_key(:data)
+        expect(results[:data]).to have_key(:attributes)
+        expect(results[:data]).to have_key(:id)
+        expect(results[:data]).to have_key(:type)
+
+        user_data = results[:data][:attributes]
+
+        expect(user_data).to have_key(:name)
+        expect(user_data).to have_key(:draft_date)
+        expect(user_data).to have_key(:draft_time)
+        expect(user_data).to have_key(:manager_id)
+
+        expect(user_data[:name]).to be_a(String)
+        expect(user_data[:draft_date]).to be_a(String)
+        expect(user_data[:draft_time]).to be_a(String)
+        expect(user_data[:manager_id]).to be_a(Integer)
+      end
+    end
   end
 end
