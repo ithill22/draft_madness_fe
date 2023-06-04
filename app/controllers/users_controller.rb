@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @facade = UserFacade.new.user(session[:user_id])
+
+    @facade = UsersFacade.new(current_user)
   end
 
   private
