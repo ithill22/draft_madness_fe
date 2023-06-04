@@ -5,10 +5,11 @@ RSpec.describe League do
     before(:each) do
       data = {
         :id=>1,
+        attributes: {
         :name=>"League Name", 
         :draft_date=>"June 25, 2023", 
         :draft_time=>"8:30 pm", 
-        :manager_id=>2}
+        :manager_id=>2}}
 
       @league = League.new(data)
     end
