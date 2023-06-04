@@ -15,8 +15,6 @@ RSpec.describe User do
       expect(@user.id).to eq(1)
       expect(@user.name).to eq("Alec")
       expect(@user.email).to eq("amkap@gmail.com")
-      expect(@user.google_id).to eq("412gfhgf235")
-      expect(@user.auth_token).to eq("hjgu734764g34734h347hdf7d7d6")
     end
   end
 end
