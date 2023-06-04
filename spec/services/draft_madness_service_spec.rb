@@ -145,5 +145,27 @@ RSpec.describe DraftMadnessService do
         expect(league_data[:manager_id]).to be_a(Integer)
       end
     end
+    context 'new_user_league' do
+      it 'creates a new user league with a given participant id', :vcr do
+        user_params = {:name=>"Alec", :email=>"amk@gmail.com", :google_id=>"123345", :auth_token=>"hjgu.734764g34734h347hdf7d7d6444"}
+        league_params = {:name=>"League Name", :draft_date=>"June 25, 2023", :draft_time=>"8:30 pm", :manager_id=>2}
+      
+        @league = DraftMadnessService.new.create_league(league_params)
+        @user = DraftMadnessService.new.register_user(user_params)
+
+        ul_details = {
+          user_id: @user.dig(:data, :id),
+          league_id: @league.dig(:data, :id)
+        }
+        service = DraftMadnessService.new
+        user_league = service.new_user_league(ul_details)
+
+        expect(user_league).to be_a(Hash)
+
+        expect(user_league[:data]).to have_key(:id)
+        expect(user_league.dig(:data, :attributes)).to have_key(:user_id)
+        expect(user_league.dig(:data, :attributes)).to have_key(:league_id)
+      end
+    end
   end
 end
