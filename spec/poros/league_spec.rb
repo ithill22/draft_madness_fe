@@ -4,6 +4,7 @@ RSpec.describe League do
   describe 'initialize' do
     before(:each) do
       data = {
+        :id=>1,
         :name=>"League Name", 
         :draft_date=>"June 25, 2023", 
         :draft_time=>"8:30 pm", 
@@ -13,6 +14,7 @@ RSpec.describe League do
     end
     it 'exists and has attributes' do
       expect(@league).to be_a(League)
+      expect(@league.id).to eq(1)
       expect(@league.name).to eq("League Name")
       expect(@league.draft_date).to eq("June 25, 2023")
       expect(@league.draft_time).to eq("8:30 pm")
