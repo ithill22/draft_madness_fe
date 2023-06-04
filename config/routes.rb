@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users, only: %i[new create]
+  resources :leagues, only: %i[new create]
 
   get '/sessions', to: 'sessions#create'
   get '/auth/:provider/callback', to: 'users#create'
