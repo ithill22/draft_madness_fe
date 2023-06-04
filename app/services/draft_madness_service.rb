@@ -3,6 +3,10 @@ class DraftMadnessService
     post_url('/api/v0/users', user_details)
   end
 
+  def get_one_user(session_id)
+    get_url("/api/v0/users/#{session_id}")
+  end
+
   private
 
   def post_url(url, user_details)
@@ -10,10 +14,10 @@ class DraftMadnessService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  # def get_url(url)
-  #   response = conn.get(url)
-  #   JSON.parse(response.body, symbolize_names: true)
-  # end
+  def get_url(url)
+    response = conn.get(url)
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
   def conn
     Faraday.new(url: 'http://localhost:3000')
