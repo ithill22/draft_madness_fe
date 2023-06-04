@@ -15,6 +15,10 @@ class DraftMadnessService
     league_post_url('/api/v0/leagues', league_details)
   end
 
+  def get_one_league(id)
+    get_url("/api/v0/leagues/#{id}")
+  end
+
   private
 
   def post_url(url, user_details)
