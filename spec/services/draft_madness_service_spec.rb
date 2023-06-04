@@ -34,7 +34,7 @@ RSpec.describe DraftMadnessService do
       end
     end
     context 'get_one_user' do
-      it 'returns user details' do
+      it 'returns user details', :vcr do
         user_details =
           {
             name: 'Alec',
