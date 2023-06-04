@@ -113,5 +113,37 @@ RSpec.describe DraftMadnessService do
         expect(user_data[:manager_id]).to be_a(Integer)
       end
     end
+    context 'get_one_league' do
+      it 'returns details for league with given id', :vcr do
+        league_details = {
+          :name=>"League Name", 
+          :draft_date=>"June 25, 2023", 
+          :draft_time=>"8:30 pm", 
+          :manager_id=>2}
+        service = DraftMadnessService.new
+        league = service.create_league(league_details)
+
+        results = service.get_one_league(league.dig(:data, :id))
+
+        expect(results).to be_a(Hash)
+
+        expect(results).to have_key(:data)
+        expect(results[:data]).to have_key(:attributes)
+        expect(results[:data]).to have_key(:id)
+        expect(results[:data]).to have_key(:type)
+
+        league_data = results[:data][:attributes]
+
+        expect(league_data).to have_key(:name)
+        expect(league_data).to have_key(:draft_date)
+        expect(league_data).to have_key(:draft_time)
+        expect(league_data).to have_key(:manager_id)
+
+        expect(league_data[:name]).to be_a(String)
+        expect(league_data[:draft_date]).to be_a(String)
+        expect(league_data[:draft_time]).to be_a(String)
+        expect(league_data[:manager_id]).to be_a(Integer)
+      end
+    end
   end
 end
