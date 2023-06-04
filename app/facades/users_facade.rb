@@ -9,7 +9,7 @@ class UsersFacade
 
   def all_users
     users_details[:data].map do |user|
-      User.new(user[:attributes])
+      User.new(user)
     end
   end
 
