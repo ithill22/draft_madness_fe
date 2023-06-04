@@ -1,6 +1,6 @@
 class LeaguesFacade
   def new_league(league_params)
-    League.new(league_details(league_params))
+    League.new(league_details(league_params)[:data])
   end
 
   private
