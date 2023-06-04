@@ -164,7 +164,9 @@ RSpec.describe DraftMadnessService do
 
         expect(user_league[:data]).to have_key(:id)
         expect(user_league.dig(:data, :attributes)).to have_key(:user_id)
+        expect(user_league.dig(:data, :attributes, :user_id)).to eq(ul_details[:user_id].to_i)
         expect(user_league.dig(:data, :attributes)).to have_key(:league_id)
+        expect(user_league.dig(:data, :attributes, :league_id)).to eq(ul_details[:league_id].to_i)
       end
     end
   end
