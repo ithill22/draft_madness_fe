@@ -11,6 +11,7 @@ RSpec.describe LeaguesFacade do
 
       lf = LeaguesFacade.new.new_league(league_details)
       expect(lf).to be_a(League)
+      expect(lf.name).to eq("League Name")
     end
   end
 end
