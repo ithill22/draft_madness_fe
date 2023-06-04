@@ -34,16 +34,16 @@ RSpec.describe DraftMadnessService do
       end
     end
     context 'get_one_user' do
-      it 'returns user details', :vcr do
+      it 'returns user details' do
         user_details =
           {
             name: 'Alec',
             email: 'amkap@gmail.com',
             google_id: '412gfhgf235',
-            auth_token: 'hjgu734764g34734h347hdf7d7d6'
+            auth_token: 'hjgu.734764g34734h347hdf7d7d6444'
         }
-        DraftMadnessService.new.register_user(user_details)
-        session_id = 'hjgu734764g34734h347hdf7d7d6'
+        users = DraftMadnessService.new.register_user(user_details)
+        session_id = 'hjgu.734764g34734h347hdf7d7d6444'
         results = DraftMadnessService.new.get_one_user(session_id)
 
         expect(results).to be_a(Hash)
