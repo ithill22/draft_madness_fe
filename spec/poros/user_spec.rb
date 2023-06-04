@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe User do
   before(:each) do
-    data = {:id=>1, 
+    data = {:id=>1,
+      attributes: {
       :name=>"Alec", 
       :email=>"amkap@gmail.com", 
       :google_id=>"412gfhgf235", 
-      :auth_token=>"hjgu734764g34734h347hdf7d7d6"}
+      :auth_token=>"hjgu734764g34734h347hdf7d7d6"}}
     @user = User.new(data)
   end
   describe 'initialize' do
