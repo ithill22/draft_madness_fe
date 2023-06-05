@@ -27,12 +27,26 @@ RSpec.describe LeaguesFacade do
 end
 
 RSpec.describe LeaguesFacade do
+  before(:each) do
+    @lf = LeaguesFacade.new
+  end
   describe 'empty_params?' do
     it 'returns true if any params are empty' do
       params
 
-      expect(LeaguesFacade.new.empty_params?(@complete_params)).to be false
-      expect(LeaguesFacade.new.empty_params?(@incomplete_params)).to be true
+      expect(@lf.empty_params?(@complete_params)).to be false
+      expect(@lf.empty_params?(@incomplete_params)).to be true
+    end
+  end
+  describe 'eight_players?' do
+    it 'returns true if 8 participants were selected' do
+      participants_1 = ['1', '2', '3', '4', '5', '6', '7', '8']
+      participants_2 = ['1', '2', '3', '4', '5', '6', '7']
+      participants_3 = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+      expect(@lf.eight_players?(participants_1)).to be true
+      expect(@lf.eight_players?(participants_2)).to be false
+      expect(@lf.eight_players?(participants_3)).to be false
     end
   end
 end
