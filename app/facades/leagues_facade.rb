@@ -14,6 +14,10 @@ class LeaguesFacade
     false
   end
 
+  def eight_players?(participants)
+    participants.count == 8
+  end
+
   private
 
   def service
