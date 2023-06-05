@@ -27,5 +27,35 @@ RSpec.describe 'new league page' do
 
       # check that user league was made
     end
+    it 'returns an error if form fields are blank', :vcr do
+      user_data
+      users = UsersFacade.new.all_users
+      user_1 = users.first
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return('hjgu.734764g34734h347hdf7d7d6444')
+
+      select "2023", from: "[day(1i)]"
+      select "June", from: "[day(2i)]"
+      select "25", from: "[day(3i)]"
+      select "08 PM", from: "[time(4i)]"
+      select "30", from: "[time(5i)]"
+      check(user_1.id)
+      click_button "Submit"
+
+      expect(current_path).to eq(new_league_path)
+      within("#flash") do
+        expect(page).to have_content("Please fill in all fields.")
+      end
+    end
+    xit 'returns an error if more than 8 participants are selected' do
+      too_many_participants
+      users = UsersFacade.new.all_users
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return('hjgu.734764g34734h347hdf7d7d6444')
+      users.each do |user|
+        within("#user-#{user.id}") do
+          expect(page).to have_field(user.id.to_s, type: 'checkbox')
+          check(user.id)
+        end
+      end      
+    end
   end
 end
