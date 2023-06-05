@@ -1,0 +1,18 @@
+<%= form_with url: leagues_path, method: :post, local: true do |f| %>
+  <%= f.label :name, "League Name" %>
+  <%= f.text_field :name %><br>
+  Invite between 4-8 players:<br>
+  <% @users.each do |user| %>
+  <div id="user-<%=user.id%>">
+    <%= check_box_tag "participants[]", user.id, false, id: "#{user.id}" %>
+    <%= label_tag "#{user.id}" do %>
+      <%= user.name %> (<%= user.email %>)
+    <% end %>
+  </div>
+<% end %>
+  <%= f.label :day, "Day" %>
+  <%= f.date_select :day %><br>
+  <%= f.label :time, "Start Time" %>
+  <%= f.time_select :time, {ampm: true} %><br/><br>
+  <%= f.submit "Submit" %>
+<% end %>
