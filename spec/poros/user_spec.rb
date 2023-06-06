@@ -3,8 +3,11 @@ require 'rails_helper'
 RSpec.describe User do
   it 'exists and has attributes' do
     attrs = {
-      name: 'Isaac',
-      email: 'thill@gmail.com'
+      id: '1234',
+      attributes: {
+        name: 'Isaac',
+        email: 'thill@gmail.com'
+      }
     }
 
     user = User.new(attrs)
