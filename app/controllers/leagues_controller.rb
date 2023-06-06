@@ -1,19 +1,29 @@
 class LeaguesController < ApplicationController
+  before_action :leagues_facade, only: [:create, :show]
+
   def new
     @users_facade = UsersFacade.new
   end
 
   def create
-    @user = UsersFacade.new(current_user).user
-    league = LeaguesFacade.new.new_league(league_params)
-    redirect_to controller: 'user_leagues',
-                action: 'create',
-                participants: params[:participants],
-                league: league.id
+    if @lf.empty_params?(params)
+      flash[:error] = "Please fill in all fields."
+      redirect_to new_league_path
+    elsif !@lf.eight_players?(params[:participants])
+      flash[:error] = "Please choose 8 players."
+      redirect_to new_league_path
+    else
+      @user = UsersFacade.new(current_user).user
+      league = @lf.new_league(league_params)
+      redirect_to controller: 'user_leagues',
+                  action: 'create',
+                  participants: params[:participants],
+                  league: league.id
+    end
   end
 
   def show
-    @league = LeaguesFacade.new.league(params[:id])
+    @league = @lf.league(params[:id])
   end
 
   private
@@ -34,5 +44,8 @@ class LeaguesController < ApplicationController
   def format_time
     Time.parse("#{params['time(4i)']}:#{params['time(5i)']}").strftime("%-l:%M %P")
   end
-end
 
+  def leagues_facade
+    @lf = LeaguesFacade.new
+  end
+end
