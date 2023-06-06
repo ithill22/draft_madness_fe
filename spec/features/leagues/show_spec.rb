@@ -4,6 +4,7 @@ RSpec.describe 'Leagues Show Page' do
   describe 'As a visitor, when I visit a leagues show page' do
     before :each do
       visit league_path(1)
+      require 'pry'; binding.pry
     end
     it 'I see the league name', :vcr do
       expect(page).to have_content('League 1')
