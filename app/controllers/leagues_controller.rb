@@ -1,15 +1,15 @@
 class LeaguesController < ApplicationController
   def new
-    @users = UsersFacade.new.all_users
+    @users_facade = UsersFacade.new
   end
 
   def create
     @user = UsersFacade.new(current_user).user
     league = LeaguesFacade.new.new_league(league_params)
     redirect_to controller: 'user_leagues',
-                  action: 'create',
-                  participants: params[:participants],
-                  league: league.id
+                action: 'create',
+                participants: params[:participants],
+                league: league.id
   end
 
   def show

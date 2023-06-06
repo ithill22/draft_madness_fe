@@ -74,10 +74,34 @@ VCR.configure do |config|
 end
 
 def user_data
-  @user_1 = {:name=>"Alec", :email=>"amk@gmail.com", :google_id=>"123345", :auth_token=>"hjgu.734764g34734h347hdf7d7d6444"}
-  @user_2 = {:name=>"Steve", :email=>"kcl@gmail.com", :google_id=>"123645", :auth_token=>"sdrf.1244h2342454kj5l5k6"}
-  @user_3 = {:name=>"George", :email=>"mjm@gmail.com", :google_id=>"123745", :auth_token=>"drsr.1244hjgjh234959525l5k6"}
-  @user_4 = {:name=>"Ted", :email=>"tct@gmail.com", :google_id=>"123945", :auth_token=>"plrd.1244hjgjh234959525l5k6"}
+  @user_1 = {
+   id: '1',
+   name: 'Alec',
+   email: 'amk@gmail.com',
+   google_id: '123345',
+   auth_token: 'hjgu.734764g34734h347hdf7d7d6444'
+  }
+
+  @user_2 = {
+    name: 'Steve',
+    email: 'kcl@gmail.com',
+    google_id: '123645',
+    auth_token: 'sdrf.1244h2342454kj5l5k6'
+  }
+
+  @user_3 = {
+    name: 'George',
+    email: 'mjm@gmail.com',
+    google_id: '123745',
+    auth_token: 'drsr.1244hjgjh234959525l5k6'
+  }
+
+  @user_4 = {
+    name: 'Ted',
+    email: 'tct@gmail.com',
+    google_id: '123945',
+    auth_token: 'plrd.1244hjgjh234959525l5k6'
+  }
 
   @users = [@user_1, @user_2, @user_3, @user_4]
 

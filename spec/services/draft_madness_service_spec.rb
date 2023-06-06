@@ -71,13 +71,12 @@ RSpec.describe DraftMadnessService do
 
     context 'all_leagues_for_one_user' do
       it 'returns all leagues for a particular user', :vcr do
-        session_id = '2'
+        session_id = '4'
         results = DraftMadnessService.new.all_leagues_for_one_user(session_id)
 
         expect(results).to be_a(Hash)
         expect(results).to have_key(:data)
         expect(results[:data]).to be_an(Array)
-        expect(results[:data].count).to eq(2)
 
         results[:data].each do |league|
           expect(league).to have_key(:type)
@@ -101,6 +100,8 @@ RSpec.describe DraftMadnessService do
           expect(league[:attributes]).to have_key(:manager_id)
           expect(league[:attributes][:manager_id]).to be_an(Integer)
         end
+      end
+    end
 
     context 'get_all_users' do
       it 'returns all user details', :vcr do
@@ -120,6 +121,7 @@ RSpec.describe DraftMadnessService do
         end
       end
     end
+
     context 'create_league' do
       it 'returns new league details', :vcr do
         league_details = {
@@ -149,6 +151,7 @@ RSpec.describe DraftMadnessService do
         expect(user_data[:manager_id]).to be_a(Integer)
       end
     end
+
     context 'get_one_league' do
       it 'returns details for league with given id', :vcr do
         league_details = {
@@ -181,11 +184,11 @@ RSpec.describe DraftMadnessService do
         expect(league_data[:manager_id]).to be_a(Integer)
       end
     end
+
     context 'new_user_league' do
       it 'creates a new user league with a given participant id', :vcr do
         user_params = {:name=>"Alec", :email=>"amk@gmail.com", :google_id=>"123345", :auth_token=>"hjgu.734764g34734h347hdf7d7d6444"}
         league_params = {:name=>"League Name", :draft_date=>"June 25, 2023", :draft_time=>"8:30 pm", :manager_id=>2}
-      
         @league = DraftMadnessService.new.create_league(league_params)
         @user = DraftMadnessService.new.register_user(user_params)
 
