@@ -51,3 +51,14 @@ RSpec.describe UsersFacade do
     end
   end
 end
+  
+  describe 'all_users' do
+    it 'returns an array of user poros', :vcr do
+      user_data
+      uf = UsersFacade.new
+      users = uf.all_users
+      expect(users).to be_a(Array)
+      expect(users).to be_all(User)
+    end
+  end
+end

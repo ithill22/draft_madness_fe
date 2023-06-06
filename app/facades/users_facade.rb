@@ -1,5 +1,5 @@
 class UsersFacade
-  def initialize(session_id)
+ def initialize(session_id = nil)
     @session_id = session_id
   end
 
@@ -18,6 +18,12 @@ class UsersFacade
     User.new(user_details[:data])
   end
 
+  def all_users
+    users_details[:data].map do |user|
+      User.new(user)
+    end
+  end
+
   private
 
   def service
@@ -27,8 +33,13 @@ class UsersFacade
   def user_details
     @_user_details ||= service.get_one_user(@session_id)
   end
+  
+   def users_details
+    @_users_details ||= service.get_all_users
+  end
 
   def leagues_details
     @_leagues_details ||= service.all_leagues_for_one_user(@session_id)
   end
 end
+
