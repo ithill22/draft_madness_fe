@@ -35,3 +35,4 @@ class LeaguesController < ApplicationController
     Time.parse("#{params['time(4i)']}:#{params['time(5i)']}").strftime("%-l:%M %P")
   end
 end
+

@@ -7,6 +7,9 @@ class DraftMadnessService
     get_url("/api/v0/users/#{session_id}")
   end
 
+  def all_leagues_for_one_user(session_id)
+    get_url("/api/v0/users/#{session_id}/leagues")
+
   def get_all_users
     get_url('/api/v0/users')
   end
@@ -39,7 +42,7 @@ class DraftMadnessService
     response = conn.post(url, user_league: {league_id: ul_details[:league_id], user_id: ul_details[:user_id]}, header: { 'CONTENT_TYPE' => 'application/json' })
     JSON.parse(response.body, symbolize_names: true)
   end
-
+    
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)

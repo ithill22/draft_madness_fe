@@ -1,10 +1,15 @@
 class League
-  attr_reader :id, :name, :draft_date, :draft_time, :manager_id
-  def initialize(data)
-    @id = data[:id]
-    @name = data.dig(:attributes, :name)
-    @draft_date = data.dig(:attributes, :draft_date)
-    @draft_time = data.dig(:attributes, :draft_time)
-    @manager_id = data.dig(:attributes, :manager_id)
+  attr_reader :name,
+              :id,
+              :draft_time,
+              :draft_date,
+              :manager_id
+
+  def initialize(league_data)
+    @id = league_data[:id]
+    @name = league_data[:attributes][:name]
+    @draft_time = league_data[:attributes][:draft_time]
+    @draft_date = league_data[:attributes][:draft_date]
+    @manager_id = league_data[:attributes][:manager_id]
   end
 end
