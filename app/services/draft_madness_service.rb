@@ -23,6 +23,10 @@ class DraftMadnessService
     get_url("/api/v0/leagues/#{id}")
   end
 
+  def get_user_leagues(league_id)
+    get_url("/api/v0/leagues/#{league_id}/user_leagues")
+  end
+
   def new_user_league(ul_details)
     ul_post_url('/api/v0/user_leagues', ul_details)
   end

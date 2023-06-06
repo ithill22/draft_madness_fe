@@ -62,6 +62,6 @@ class LeaguesFacade
   end
   
   def league_data
-    _league_data ||= service.get_league_info(@id)
+    _league_data ||= service.get_one_league(@id)
   end
 end

@@ -23,7 +23,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @league = @lf.league(params[:id])
+    @facade = LeaguesFacade.new(params)
   end
 
   private
