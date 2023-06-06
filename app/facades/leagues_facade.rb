@@ -1,4 +1,6 @@
 class LeaguesFacade
+  def initialize
+
   def new_league(league_params)
     League.new(new_league_details(league_params)[:data])
   end
