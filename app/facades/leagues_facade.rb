@@ -1,5 +1,6 @@
 class LeaguesFacade
   def initialize(params)
+    require 'pry'; binding.pry
     @id = params[:id]
   end
 
