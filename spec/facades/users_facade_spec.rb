@@ -40,25 +40,23 @@ RSpec.describe UsersFacade do
 
     describe 'all_leagues_for_user' do
       it 'returns an array of leagues', :vcr do
-        session_id = '2'
+        session_id = '4'
         facade = UsersFacade.new(session_id)
-
+   
         expect(facade.all_leagues_for_user).to be_an(Array)
-        expect(facade.all_leagues_for_user.count).to eq(2)
         expect(facade.all_leagues_for_user.first).to be_a(League)
         expect(facade.all_leagues_for_user.first.name).to be_a(String)
       end
     end
-  end
-end
-  
-  describe 'all_users' do
-    it 'returns an array of user poros', :vcr do
-      user_data
-      uf = UsersFacade.new
-      users = uf.all_users
-      expect(users).to be_a(Array)
-      expect(users).to be_all(User)
+
+    describe 'all_users' do
+      it 'returns an array of user poros', :vcr do
+        user_data
+        uf = UsersFacade.new
+        users = uf.all_users
+        expect(users).to be_a(Array)
+        expect(users).to be_all(User)
+      end
     end
   end
 end

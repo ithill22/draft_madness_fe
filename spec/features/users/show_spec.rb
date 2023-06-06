@@ -2,14 +2,17 @@ require 'rails_helper'
 
 RSpec.describe 'User Show Page' do
   describe 'As a user, when I visit the user show page,' do
-    it 'I see my name welcoming me to my dashboard', :vcr do
-      user_2 = {
+    before :each do
+      @user_2 = {
         name: 'Bob',
         email: 'bob@turing.edu',
         google_id: '12345',
         auth_token: 'abc123'
       }
-      dms = DraftMadnessService.new.register_user(user_2)
+    end
+
+    it 'I see my name welcoming me to my dashboard', :vcr do
+      dms = DraftMadnessService.new.register_user(@user_2)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(dms[:data][:id])
       visit users_dashboard_path
 
@@ -17,13 +20,7 @@ RSpec.describe 'User Show Page' do
     end
 
     it 'I see a section that displays the name of each league I am participating in', :vcr do
-      user_2 = {
-        name: 'Bob',
-        email: 'bob@turing.edu',
-        google_id: '12345',
-        auth_token: 'abc123'
-      }
-      dms = DraftMadnessService.new.register_user(user_2)
+      dms = DraftMadnessService.new.register_user(@user_2)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(dms[:data][:id])
       visit users_dashboard_path
 
@@ -41,13 +38,7 @@ RSpec.describe 'User Show Page' do
     end
 
     it 'I see that each league name is a link to that leagues show page', :vcr do
-      user_2 = {
-        name: 'Bob',
-        email: 'bob@turing.edu',
-        google_id: '12345',
-        auth_token: 'abc123'
-      }
-      dms = DraftMadnessService.new.register_user(user_2)
+      dms = DraftMadnessService.new.register_user(@user_2)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(dms[:data][:id])
       visit users_dashboard_path
 
@@ -59,15 +50,18 @@ RSpec.describe 'User Show Page' do
         expect(current_path).to eq(league_path(1))
       end
     end
-  end
 
-  describe 'As a registered user, when I visit my dashboard' do
     it 'has a button to create a league', :vcr do
+      dms = DraftMadnessService.new.register_user(@user_2)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(dms[:data][:id])
       visit users_dashboard_path
-      expect(page).to have_button("Create League")
-      click_button "Create League"
+
+      expect(page).to have_button('Create League')
+
+      click_button 'Create League'
+
       expect(current_path).to eq(new_league_path)
     end
   end
 end
-
