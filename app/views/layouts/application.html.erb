@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <h1>WELCOME TO THE MADNESS</h1>
     <%= yield %>
+    <div id="flash">
+      <% flash.each do |type, notice| %>
+          <h3><b><%= notice %></b></h3>
+      <% end %>
+    </div>
   </body>
 </html>

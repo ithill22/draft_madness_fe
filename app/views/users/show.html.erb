@@ -1,0 +1,15 @@
+<h2><%= @facade.user_name %>'s Dashboard</h2>
+<section id="leagues_for_user">
+  <h3>Leagues I'm in:</h3>
+  <% if @facade.all_leagues_for_user == nil %>
+    <h3>You are currently in 0 leagues.</h3>
+  <% else %>
+    <% @facade.all_leagues_for_user.each do |league| %>
+    <div id="league_<%= league.id %>">
+      <h4><%= link_to league.name, league_path(league.id) %></h4>
+      <br>
+    </div>
+    <% end %>
+  <% end %>
+</section>
+<%= button_to "Create League", new_league_path, method: :get %>
