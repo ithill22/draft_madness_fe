@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
     @facade = UsersFacade.new(current_user)
   end
 
