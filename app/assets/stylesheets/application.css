@@ -13,3 +13,79 @@
  *= require_tree .
  *= require_self
  */
+body {
+  background-color: #1e1e1e;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #ae662c;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #1d1c21;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 16px
+}
+
+.header {
+  background-color: #ae662c;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  color: #1d1c21;
+}
+
+.head-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-image {
+  width: 100%;
+}
+
+.title-page {
+  background-color: #ae662c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.google-oauth-link {
+  background-color: #1d1c21;
+  color: #ae662c;
+  border: 1px solid #646260;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+#head-content {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1d1c21;
+}
+
+#hoop-logo {
+  height: 30px;
+}

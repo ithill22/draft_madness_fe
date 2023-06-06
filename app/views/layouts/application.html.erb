@@ -11,7 +11,11 @@
   </head>
 
   <body>
-    <h1>WELCOME TO THE MADNESS</h1>
+    <% if current_page?(root_path) %>
+      <!-- no action -->
+    <% else %>
+      <%= render 'layouts/header' %>
+    <% end %>
     <%= yield %>
     <div id="flash">
       <% flash.each do |type, notice| %>
