@@ -2,7 +2,7 @@
   <%= f.label :name, "League Name" %>
   <%= f.text_field :name %><br>
   Invite between 4-8 players:<br>
-  <% @users.each do |user| %>
+  <% @users_facade.all_users.each do |user| %>
   <div id="user-<%=user.id%>">
     <%= check_box_tag "participants[]", user.id, false, id: "#{user.id}" %>
     <%= label_tag "#{user.id}" do %>

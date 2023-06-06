@@ -12,7 +12,7 @@ RSpec.describe 'new user page' do
           email: 'amk@gmail.com'
         },
         credentials: {
-          token: '1244hjgjh54jg333h4kj5l5k6'
+          token: '1244.hjgjh54jg333h4kj5l5k6'
         }
       })
 

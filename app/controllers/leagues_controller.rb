@@ -2,7 +2,7 @@ class LeaguesController < ApplicationController
   before_action :leagues_facade, only: [:create, :show]
 
   def new
-    @users = UsersFacade.new.all_users
+    @users_facade = UsersFacade.new
   end
 
   def create
