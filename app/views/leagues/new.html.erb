@@ -16,3 +16,5 @@
   <%= f.time_select :time, {ampm: true} %><br/><br>
   <%= f.submit "Submit" %>
 <% end %>
+<br>
+<%= button_to "Return To My Dashboard", '/users/dashboard', method: :get %>
