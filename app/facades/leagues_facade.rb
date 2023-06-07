@@ -1,6 +1,6 @@
 class LeaguesFacade
-  def initialize(params)
-    @id = params[:id]
+  def initialize(id = nil)
+    @id = id
   end
 
   def new_league(league_params)
@@ -11,42 +11,29 @@ class LeaguesFacade
     League.new(league_details(id)[:data])
   end
 
-  def empty_params?(params)
-    params.each do |k,_v|
-      return true if !params[k].present?
-    end
-    false
-  end
-
-  def eight_players?(participants)
-    participants.count == 8
-  end
-
   def league_name
     league = League.new(league_data[:data])
-     league.name
-   end
- 
-   def league_id
-     league = League.new(league_data[:data])
-     league.id
-   end
- 
-   def league_rosters
-     all_user_leagues_data[:data].map do |roster_data|
-       UserLeague.new(roster_data)
-     end
-   end
- 
-   def league_draft_time
-     draft_time = league_data[:data][:attributes][:draft_time]
-     DateTime.parse(draft_time) if draft_time.present?
-   end
+    league.name
+  end
 
-   def user_name(user_id)
+  def league_id
+    league = League.new(league_data[:data])
+    league.id
+  end
+
+  def league_rosters
+    all_ul_data[:data].map { |roster_data| UserLeague.new(roster_data) }
+  end
+
+  def league_draft_time
+    draft_time = league_data[:data][:attributes][:draft_time]
+    DateTime.parse(draft_time) if draft_time.present?
+  end
+
+  def user_name(user_id)
     user_data = service.get_one_user(user_id)
     user_data[:data][:attributes][:name]
-   end
+  end
 
   private
 
@@ -62,11 +49,11 @@ class LeaguesFacade
     @_league_details ||= service.get_one_league(id)
   end
 
-  def all_user_leagues_data
-    _all_user_league_data ||= service.get_user_leagues(@id)
+  def all_ul_data
+    @_all_user_league_data ||= service.get_user_leagues(@id)
   end
-  
+
   def league_data
-    _league_data ||= service.get_league_info(@id)
+    @_league_data ||= service.get_league_info(@id)
   end
 end

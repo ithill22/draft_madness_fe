@@ -1,5 +1,5 @@
 class UsersFacade
- def initialize(session_id = nil)
+  def initialize(session_id = nil)
     @session_id = session_id
   end
 

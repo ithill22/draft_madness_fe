@@ -1,20 +1,17 @@
 class LeaguesController < ApplicationController
-  before_action :leagues_facade, only: [:create]
-
   def new
     @users_facade = UsersFacade.new
   end
 
   def create
-    if @lf.empty_params?(params)
-      flash[:error] = "Please fill in all fields."
+    if empty_params?(params)
+      flash[:error] = 'Please fill in all fields.'
       redirect_to new_league_path
-    elsif !@lf.eight_players?(params[:participants])
-      flash[:error] = "Please choose 8 players."
+    elsif !eight_players(params[:participants])
+      flash[:error] = 'Please choose 8 players.'
       redirect_to new_league_path
     else
-      @user = UsersFacade.new(current_user).user
-      league = @lf.new_league(league_params)
+      league = LeaguesFacade.new.new_league(league_params)
       redirect_to controller: 'user_leagues',
                   action: 'create',
                   participants: params[:participants],
@@ -23,11 +20,10 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @facade = LeaguesFacade.new(params)
+    @facade = LeaguesFacade.new(params[:id])
   end
 
-  def draft
-  end
+  def draft; end
 
   private
 
@@ -36,8 +32,19 @@ class LeaguesController < ApplicationController
       name: params[:name],
       draft_date: format_date,
       draft_time: format_time,
-      manager_id: @user.id
+      manager_id: current_user
     }
+  end
+
+  def empty_params?(params)
+    params.each do |k, _|
+      return true unless params[k].present?
+    end
+    false
+  end
+
+  def eight_players(participants)
+    participants.count == 8
   end
 
   def format_date
@@ -46,9 +53,5 @@ class LeaguesController < ApplicationController
 
   def format_time
     Time.parse("#{params['time(4i)']}:#{params['time(5i)']}").strftime("%-l:%M %P")
-  end
-
-  def leagues_facade
-    @lf = LeaguesFacade.new
   end
 end
