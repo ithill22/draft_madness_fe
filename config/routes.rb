@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get '/draft', to: 'leagues#draft'
   end
   resources :user_leagues, only: %i[show]
-  post '/user_leagues', to: 'user_leagues#create'
+  get '/user_leagues', to: 'user_leagues#create'
   get '/sessions', to: 'sessions#create'
   get '/auth/:provider/callback', to: 'users#create'
   get '/users/dashboard', to: 'users#show'
