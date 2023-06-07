@@ -1,5 +1,5 @@
 class UsersFacade
- def initialize(session_id = nil)
+  def initialize(session_id = nil)
     @session_id = session_id
   end
 
@@ -33,8 +33,8 @@ class UsersFacade
   def user_details
     @_user_details ||= service.get_one_user(@session_id)
   end
-  
-   def users_details
+
+  def users_details
     @_users_details ||= service.get_all_users
   end
 

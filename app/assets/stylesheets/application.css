@@ -27,7 +27,6 @@ body {
 a {
   color: #1d1c21;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 ul {
@@ -36,6 +35,38 @@ ul {
   margin: 0;
   display: flex;
   gap: 16px
+}
+
+table {
+  border: 2px solid #646260;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+thead {
+  background-color: #ae662c;
+  color: #1d1c21;
+  font-weight: 700;
+}
+
+tbody {
+  background-color: #1d1c21;
+  color: #ae662c;
+  font-weight: 700;
+}
+
+tr {
+  border: 2px solid #646260;
+  padding: 8px;
+}
+
+.link-secondary {
+  color: #ae662c;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .btn-primary {
@@ -47,6 +78,16 @@ ul {
   text-transform: uppercase;
   padding: 8px 16px;
   margin: 16px;
+}
+
+.btn-secondary {
+  background-color: #1d1c21;
+  color: #ae662c;
+  border: 1px solid #ae662c;
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 4px 8px;
+  margin: 8px;
 }
 
 .page {
@@ -75,6 +116,11 @@ ul {
   border-left: 2px solid #1d1c21;
   padding-left: 16px;
 }
+
+.right-links {
+  text-transform: uppercase;
+}
+
 
 #head-content {
   font-size: 24px;

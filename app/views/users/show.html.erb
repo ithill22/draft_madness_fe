@@ -5,13 +5,28 @@
     <% if @facade.all_leagues_for_user == [] %>
       <h3>You are currently in 0 leagues.</h3>
     <% else %>
-      <ol>
-        <% @facade.all_leagues_for_user.each do |league| %>
-        <li id="league_<%= league.id %>">
-          <%= link_to league.name, league_path(league.id), class: 'league-summary' %>
-        </li>
-      </ol>
-      <% end %>
+      <table class='leage-table'>
+        <thead>
+          <tr>
+            <th>League Name</th>
+            <th>Roster Link</th>
+            <th>Draft Time</th>
+            <th>Draft Date</th>
+            <th>League Manager</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @facade.all_leagues_for_user.each do |league| %>
+            <tr>
+              <td class='td-primary'><%= link_to league.name, league_path(league.id), class: 'link-secondary' %></td>
+              <td><%= link_to "Roster", '#', class: 'btn-secondary' %></td>
+              <td><%= league.draft_time %></td>
+              <td><%= league.draft_date %></td>
+              <td><%= league.manager_name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
   </section>
   <%= button_to "Create League", new_league_path, method: :get, class: 'btn-primary' %>
