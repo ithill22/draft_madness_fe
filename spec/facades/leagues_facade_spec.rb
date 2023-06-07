@@ -21,7 +21,7 @@ RSpec.describe LeaguesFacade do
 
   describe 'league' do
     it 'returns league details', :vcr do
-      league = LeaguesFacade.new.league(@facade.id)
+      league = LeaguesFacade.new(@facade.id).league
 
       expect(league).to be_a(League)
       expect(league.name).to eq('League Name')
