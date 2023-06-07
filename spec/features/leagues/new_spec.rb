@@ -34,7 +34,6 @@ RSpec.describe 'new league page' do
       click_button "Submit"
 
       expect(page).to have_content('League Name')
-      # check that user league was made
     end
     it 'returns an error if form fields are blank', :vcr do
       user_data
@@ -78,6 +77,20 @@ RSpec.describe 'new league page' do
       within("#flash") do
         expect(page).to have_content("Please choose 8 players.")
       end
+    end
+    it 'has a button to return to the user dashboard', :vcr do
+      user_2 = {
+        name: 'Bob',
+        email: 'bob@turing.edu',
+        google_id: '12345',
+        auth_token: 'abc123'
+      }
+      dms = DraftMadnessService.new.register_user(user_2)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(dms[:data][:id])
+      
+      expect(page).to have_button("Return To My Dashboard")
+      click_button("Return To My Dashboard")
+      expect(current_path).to eq('/users/dashboard')
     end
   end
 end
