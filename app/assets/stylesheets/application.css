@@ -69,15 +69,24 @@ ul {
 .google-oauth-link {
   background-color: #1d1c21;
   color: #ae662c;
-  border: 1px solid #646260;
+  border: 3px solid #646260;
   border-radius: 5px;
-  padding: 8px 16px;
+  padding: 4px 16px 4px 0px;
   font-size: 16px;
   font-weight: 700;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  margin-bottom: 300px;
+}
+
+.google-login-logo {
+  height: 30px;
+  margin-right: 16px;
 }
 
 #head-content {
