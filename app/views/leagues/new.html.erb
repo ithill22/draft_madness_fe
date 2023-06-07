@@ -1,20 +1,27 @@
-<%= form_with url: leagues_path, method: :post, local: true do |f| %>
-  <%= f.label :name, "League Name" %>
-  <%= f.text_field :name %><br>
-  Invite 7 players:<br>
-  <% @users_facade.all_users.each do |user| %>
-    <% if user.id != current_user %>
-      <div id="user-<%=user.id%>">
-        <%= check_box_tag "participants[]", user.id, false, id: "#{user.id}" %>
-        <%= label_tag "#{user.id}" do %>
-          <%= user.name %> (<%= user.email %>)
-        <% end %>
-      </div>
-    <% end %>
-<% end %>
-  <%= f.label :day, "Day" %>
-  <%= f.date_select :day %><br>
-  <%= f.label :time, "Start Time" %>
-  <%= f.time_select :time, {ampm: true} %><br/><br>
-  <%= f.submit "Submit" %>
-<% end %>
+<div class='page new-league'>
+  <h2 class='page-title'>Create a New League</h2>
+  <%= form_with url: leagues_path, method: :post, local: true do |f| %>
+    <div class='league-name'>
+      <%= f.label :name, "League Name:", class: "league-input-label" %>
+      <%= f.text_field :name, class: "text-field-primary" %>
+    </div>
+    <br>
+    <span class="instruction">Invite 8 players:</span>
+    <br>
+    <% @users_facade.all_users.each do |user| %>
+      <% if user.id != current_user %>
+        <div id="user-<%=user.id%>">
+          <%= check_box_tag "participants[]", user.id, false, id: "#{user.id}" %>
+          <%= label_tag "#{user.id}" do %>
+            <%= user.name %> (<%= user.email %>)
+          <% end %>
+        </div>
+      <% end %>
+  <% end %>
+    <%= f.label :day, "Day" %>
+    <%= f.date_select :day %>
+    <%= f.label :time, "Start Time" %>
+    <%= f.time_select :time, {ampm: true} %>
+    <%= f.submit "Submit", class: "btn-primary" %>
+  <% end %>
+</div>

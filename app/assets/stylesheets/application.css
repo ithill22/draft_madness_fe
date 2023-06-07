@@ -121,6 +121,13 @@ tr {
   text-transform: uppercase;
 }
 
+.text-field-primary {
+  background-color: #1d1c21;
+  color: #ae662c;
+  border: 1px solid #ae662c;
+  border-radius: 5px;
+}
+
 
 #head-content {
   font-size: 24px;
