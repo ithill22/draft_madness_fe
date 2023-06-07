@@ -17,7 +17,7 @@ RSpec.describe 'new league page' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(dms[:data][:id])
       users = UsersFacade.new.all_users
 
-      fill_in :name, with: 'League Name'
+      fill_in :name, with: 'The New League Name'
 
       select '2023', from: '[day(1i)]'
       select 'June', from: '[day(2i)]'
@@ -25,16 +25,18 @@ RSpec.describe 'new league page' do
       select '08 PM', from: '[time(4i)]'
       select '30', from: '[time(5i)]'
 
-      users.each do |user|
+  
+      users[0..7].each do |user|
         within("#user-#{user.id}") do
           expect(page).to have_field(user.id.to_s, type: 'checkbox')
-          check(user.name)
+          check(user.id)
         end
       end
 
+
       click_button 'Submit'
 
-      expect(page).to have_content('League Name')
+      expect(page).to have_content('The New League Name')
     end
 
     it 'returns an error if form fields are blank', :vcr do

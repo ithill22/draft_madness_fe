@@ -62,6 +62,7 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
+  config.example_status_persistence_file_path= 'spec/examples.txt'
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace('gem name')
 end
