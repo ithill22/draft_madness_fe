@@ -1,0 +1,11 @@
+<% if @facade.league_draft_time && Time.current >= @facade.league_draft_time - 30.minutes %>
+  <%= button_to "Enter Draft Room", league_draft_path(@facade.league_id), method: :get %>
+<% else %>
+  <button disabled>
+    <% if @facade.league_draft_time %>
+      Draft Start Time: <%= @facade.league_draft_time.strftime('%Y-%m-%d %H:%M:%S') %>
+    <% else %>
+      Draft Start Time
+    <% end %>
+  </button>
+<% end %>
