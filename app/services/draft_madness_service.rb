@@ -50,6 +50,10 @@ class DraftMadnessService
   end
 
   def conn
-    Faraday.new(url: 'http://localhost:3000')
+    if Rails.env.production?
+      Faraday.new(url: 'https://draftmadnessapi.herokuapp.com')
+    else 
+      Faraday.new(url: 'http://localhost:3000')
+    end
   end
 end
