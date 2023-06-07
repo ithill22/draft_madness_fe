@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-  before_action :leagues_facade, only: [:create, :show]
+  before_action :leagues_facade, only: [:create]
 
   def new
     @users_facade = UsersFacade.new
@@ -24,6 +24,9 @@ class LeaguesController < ApplicationController
 
   def show
     @facade = LeaguesFacade.new(params)
+  end
+
+  def draft
   end
 
   private

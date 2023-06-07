@@ -11,6 +11,8 @@ RSpec.describe 'Leagues Show Page' do
 
     it 'I see the rosters for the league', :vcr do
       expect(page).to have_link("Bob's Roster")
+      expect(page).to have_link("Sally's Roster")
+      expect(page).to have_link("Joe's Roster")
     end
   end
 end

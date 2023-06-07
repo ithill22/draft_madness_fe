@@ -1,6 +1,5 @@
 class LeaguesFacade
   def initialize(params)
-    require 'pry'; binding.pry
     @id = params[:id]
   end
 
@@ -24,12 +23,12 @@ class LeaguesFacade
   end
 
   def league_name
-    league = League.new(league_data)
+    league = League.new(league_data[:data])
      league.name
    end
  
    def league_id
-     league = League.new(league_data)
+     league = League.new(league_data[:data])
      league.id
    end
  
@@ -42,6 +41,11 @@ class LeaguesFacade
    def league_draft_time
      draft_time = league_data[:data][:attributes][:draft_time]
      DateTime.parse(draft_time) if draft_time.present?
+   end
+
+   def user_name(user_id)
+    user_data = service.get_one_user(user_id)
+    user_data[:data][:attributes][:name]
    end
 
   private
@@ -63,6 +67,6 @@ class LeaguesFacade
   end
   
   def league_data
-    _league_data ||= service.get_one_league(@id)
+    _league_data ||= service.get_league_info(@id)
   end
 end

@@ -19,8 +19,8 @@ class DraftMadnessService
     league_post_url('/api/v0/leagues', league_details)
   end
 
-  def get_one_league(id)
-    get_url("/api/v0/leagues/#{id}")
+  def get_one_league(league_id)
+    get_url("/api/v0/leagues/#{league_id}")
   end
 
   def get_user_leagues(league_id)
@@ -29,6 +29,10 @@ class DraftMadnessService
 
   def new_user_league(ul_details)
     ul_post_url('/api/v0/user_leagues', ul_details)
+  end
+
+  def get_league_info(league_id)
+    get_url("/api/v0/leagues/#{league_id}")
   end
 
   private
