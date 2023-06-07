@@ -94,6 +94,10 @@ tr {
   margin: 2%;
 }
 
+input[type=checkbox] {
+  accent-color: #ae662c;
+}
+
 .header {
   background-color: #ae662c;
   display: flex;
@@ -121,7 +125,7 @@ tr {
   text-transform: uppercase;
 }
 
-.text-field-primary {
+.input-field-primary {
   background-color: #1d1c21;
   color: #ae662c;
   border: 1px solid #ae662c;
