@@ -7,8 +7,8 @@ class LeaguesFacade
     League.new(new_league_details(league_params)[:data])
   end
 
-  def league(id)
-    League.new(league_details(id)[:data])
+  def league
+    League.new(league_details[:data])
   end
 
   def league_name
@@ -45,8 +45,8 @@ class LeaguesFacade
     @_new_league_details ||= service.create_league(league_params)
   end
 
-  def league_details(id)
-    @_league_details ||= service.get_one_league(id)
+  def league_details
+    @_league_details ||= service.get_one_league(@id)
   end
 
   def all_ul_data
