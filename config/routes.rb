@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users, only: %i[new create]
-  resources :leagues, only: %i[new create show]
-  get '/user_leagues', to: 'user_leagues#create'
+  resources :leagues, only: %i[new create show] do
+    get '/draft', to: 'leagues#draft'
+  end
+  resources :user_leagues, only: %i[show]
+  post '/user_leagues', to: 'user_leagues#create'
+  # resources :sessions, only: %i[new create destroy]
   get '/sessions', to: 'sessions#create'
   get '/auth/:provider/callback', to: 'users#create'
   get '/users/dashboard', to: 'users#show'
