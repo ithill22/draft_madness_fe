@@ -17,7 +17,7 @@
         </thead>
         <tbody>
           <% @facade.all_leagues_for_user.each do |league| %>
-            <tr>
+            <tr id="league_<%= league.id %>">
               <td class='td-primary'><%= link_to league.name, league_path(league.id), class: 'link-secondary' %></td>
               <td><%= link_to "Roster", '#', class: 'btn-secondary' %></td>
               <td><%= league.draft_time %></td>

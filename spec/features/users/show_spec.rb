@@ -24,7 +24,7 @@ RSpec.describe 'User Show Page' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(dms[:data][:id])
       visit users_dashboard_path
 
-      expect(page).to have_content("Leagues I'm in:")
+      expect(page).to have_content("My Leagues:")
 
       within '#league_1' do
         expect(page).to have_content('League 1')
