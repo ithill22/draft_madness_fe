@@ -5,17 +5,17 @@ RSpec.describe 'Leagues Show Page' do
     before :each do
       visit league_path(1)
     end
-    xit 'I see the league name', :vcr do
+    it 'I see the league name', :vcr do
       expect(page).to have_content('League 1')
     end
 
-    xit 'I see the rosters for the league', :vcr do
+    it 'I see the rosters for the league', :vcr do
       expect(page).to have_link("Bob's Roster")
       expect(page).to have_link("Sally's Roster")
       expect(page).to have_link("Joe's Roster")
     end
 
-    xit 'I see a draft button', :vcr do
+    it 'I see a draft button', :vcr do
       visit league_path(3)
       expect(page).to have_button('Enter Draft Room')
     end
@@ -30,7 +30,6 @@ RSpec.describe 'Leagues Show Page' do
       click_button('Enter Draft Room')
 
       expect(current_path).to eq(league_draft_path(3))
-      save_and_open_page
     end
   end
 end
