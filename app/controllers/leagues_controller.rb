@@ -4,9 +4,9 @@ class LeaguesController < ApplicationController
   end
 
   def create
-    if empty_params?(params)
+    if empty_params?
       empty_params_error
-    elsif !seven_players(params[:participants])
+    elsif !seven_players
       less_than_7_error
     else
       create_new_user_league
@@ -38,7 +38,7 @@ class LeaguesController < ApplicationController
                 league: league.id
   end
 
-  def empty_params
+  def empty_params?
     params.each do |k, _|
       return true unless params[k].present?
     end
