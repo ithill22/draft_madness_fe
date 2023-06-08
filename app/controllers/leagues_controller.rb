@@ -7,8 +7,8 @@ class LeaguesController < ApplicationController
     if empty_params?(params)
       flash[:error] = 'Please fill in all fields.'
       redirect_to new_league_path
-    elsif !eight_players(params[:participants])
-      flash[:error] = 'Please choose 8 players.'
+    elsif !seven_players
+      flash[:error] = 'Please choose 7 players.'
       redirect_to new_league_path
     else
       league = LeaguesFacade.new.new_league(league_params)
@@ -43,8 +43,8 @@ class LeaguesController < ApplicationController
     false
   end
 
-  def eight_players(participants)
-    participants.count == 8
+  def seven_players
+    params[:participants].count == 7
   end
 
   def format_date

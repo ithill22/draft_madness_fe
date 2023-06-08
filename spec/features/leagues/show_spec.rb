@@ -17,10 +17,11 @@ RSpec.describe 'Leagues Show Page' do
 
     it 'I see a draft button', :vcr do
       visit league_path(3)
-      expect(page).to have_button('Enter Draft Room')
+      expect(page).to have_button('Enter Draft Room', disabled: true)
     end
 
     it 'the draft button is disabled until 30 minutes before draft time', :vcr do
+      user = User.new()
       visit league_path(4)
       expect(page).to have_button('Enter Draft Room', disabled: true)
     end

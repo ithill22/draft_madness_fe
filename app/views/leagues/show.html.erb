@@ -2,10 +2,25 @@
   <h3><%= @facade.league_name %></h3>
   <br>
   <h4>Leaderboard</h4>
-  <li>
-    <% @facade.league_rosters.each do |roster| %>
-      <ul><%= link_to "#{@facade.user_name(roster.user_id)}'s Roster", user_league_path(roster), class: 'link-secondary' %></ul>
-    <% end %>
-  </li>
+  <table class='leaderboard'>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Roster Name</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% i = 1 %>
+      <% @facade.league_rosters.each do |roster| %>
+        <tr>
+          <td class='td-number'><%= i %></td>
+          <td class='td-primary'><%= link_to "#{@facade.user_name(roster.user_id)}'s Roster", user_league_path(roster), class: 'link-secondary' %></td>
+          <td>#</td>
+          <% i += 1 %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
   <%= render 'shared/draft_button' %>
 </div>

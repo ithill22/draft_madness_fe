@@ -62,6 +62,10 @@ tr {
   padding: 8px;
 }
 
+td {
+  border: 2px solid #646260;
+}
+
 .link-secondary {
   color: #ae662c;
   font-weight: 700;
@@ -130,6 +134,10 @@ input[type=checkbox] {
   color: #ae662c;
   border: 1px solid #ae662c;
   border-radius: 5px;
+}
+
+.td-primary {
+  text-align: left;
 }
 
 
