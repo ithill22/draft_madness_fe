@@ -4,10 +4,10 @@ class LeaguesController < ApplicationController
   end
 
   def create
-    if empty_params
+    if empty_params?
       empty_params_error
-    elsif !eight_players
-      less_than_8_error
+    elsif !seven_players
+      less_than_7_error
     else
       create_new_user_league
     end
@@ -38,24 +38,24 @@ class LeaguesController < ApplicationController
                 league: league.id
   end
 
-  def empty_params
+  def empty_params?
     params.each do |k, _|
       return true unless params[k].present?
     end
     false
   end
-
+    
   def empty_params_error
     flash[:error] = 'Please fill in all fields.'
     redirect_to new_league_path
   end
 
-  def eight_players
-    params[:participants].count == 8
+  def seven_players
+    params[:participants].count == 7
   end
 
-  def less_than_8_error
-    flash[:error] = 'Please choose 8 players.'
+  def less_than_7_error
+    flash[:error] = 'Please choose 7 players.'
     redirect_to new_league_path
   end
 
