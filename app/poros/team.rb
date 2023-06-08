@@ -1,5 +1,9 @@
 class Team
-  attr_reader :id, :type, :name, :region, :seed
+  attr_reader :id,
+              :type,
+              :name,
+              :region,
+              :seed
 
   def initialize(data)
     @id = data[:id]
