@@ -42,7 +42,7 @@ RSpec.describe UsersFacade do
       it 'returns an array of leagues', :vcr do
         session_id = '4'
         facade = UsersFacade.new(session_id)
-   
+
         expect(facade.all_leagues_for_user).to be_an(Array)
         expect(facade.all_leagues_for_user.first).to be_a(League)
         expect(facade.all_leagues_for_user.first.name).to be_a(String)
@@ -56,6 +56,16 @@ RSpec.describe UsersFacade do
         users = uf.all_users
         expect(users).to be_a(Array)
         expect(users).to be_all(User)
+      end
+    end
+
+    describe 'articles' do
+      it 'returns an array of article objects', :vcr do
+        facade = UsersFacade.new
+
+        expect(facade.articles).to be_an(Array)
+        expect(facade.articles.count).to eq(3)
+        expect(facade.articles.first).to be_an(Article)
       end
     end
   end
