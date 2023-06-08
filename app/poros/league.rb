@@ -17,10 +17,6 @@ class League
     user_details[:data][:attributes][:name]
   end
 
-  def format_time
-    @draft_time.to_strftime('%I:%M %p')
-  end
-
   private
 
   def service

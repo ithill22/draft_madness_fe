@@ -26,7 +26,7 @@ RSpec.describe 'new league page' do
       select '30', from: '[time(5i)]'
 
   
-      users[0..7].each do |user|
+      users[0..6].each do |user|
         within("#user-#{user.id}") do
           expect(page).to have_field(user.id.to_s, type: 'checkbox')
           check(user.id)
@@ -83,7 +83,7 @@ RSpec.describe 'new league page' do
 
       expect(current_path).to eq(new_league_path)
       within('#flash') do
-        expect(page).to have_content('Please choose 8 players.')
+        expect(page).to have_content('Please choose 7 players.')
       end
     end
   end
