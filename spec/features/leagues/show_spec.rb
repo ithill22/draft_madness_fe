@@ -28,7 +28,7 @@ RSpec.describe 'Leagues Show Page' do
     it 'If I click the draft button, I am taken to the draft page', :vcr do
       visit league_path(3)
       click_button('Enter Draft Room')
-
+save_and_open_page
       expect(current_path).to eq(league_draft_path(3))
     end
   end

@@ -16,3 +16,4 @@ Rails.application.routes.draw do
   resources :user_leagues, only: %i[show]
   get '/user_leagues', to: 'user_leagues#create'
 
+end

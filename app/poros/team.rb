@@ -4,8 +4,8 @@ class Team
   def initialize(data)
     @id = data[:id]
     @type = data[:type]
-    @name = data[:name]
-    @region = data[:region]
-    @seed = data[:seed]
+    @name = data[:attributes][:name]
+    @region = data[:attributes][:region]
+    @seed = data[:attributes][:seed]
   end
 end

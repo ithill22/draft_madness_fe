@@ -49,7 +49,7 @@
           <td><%= team.name %></td>
           <td><%= team.seed %></td>
           <td><%= team.region %></td>
-          <td><%= button_to "Draft", draft_team_path(team_id: team.id), method: :post, class: 'btn-secondary' %>
+          <td><%= button_to "Draft", draft_team_path(team_id: team.id), method: :post, class: 'btn-secondary' %></td>
         </tr>
       <% end %>
     </table>
