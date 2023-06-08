@@ -1,55 +1,57 @@
-<h3><%= @facade.league_name %></h3>
-<p><strong>Current Pick: <%= @facade.current_pick %></strong></p>
-<p><strong>Next Pick: <%= @facade.next_pick %></strong></p>
-<div class="draft-board">
-  <h4>Draft Board</h4>
-  <table>
-    <tr>
-      <th>Pick Number</th>
-      <th>Drafter</th>
-      <th>Team Drafted</th>
-    </tr>
-    <% @facade.draft_board.each do |pick| %>
+<div class='page'>
+  <h3><%= @facade.league_name %></h3>
+  <p><strong>Current Pick: <%= @facade.current_pick %></strong></p>
+  <p><strong>Next Pick: <%= @facade.next_pick %></strong></p>
+  <div class="draft-board">
+    <h4>Draft Board</h4>
+    <table>
       <tr>
-        <td><%= pick[:pick_number] %></td>
-        <td><%= pick[:drafter] %></td>
-        <td></td>
+        <th>Pick Number</th>
+        <th>Drafter</th>
+        <th>Team Drafted</th>
       </tr>
-    <% end %>
-  </table>
-</div>
-<div class="user-team">
-  <h4>My Teams</h4>
-  <table>
-    <tr>
-      <th>Team</th>
-      <th>Seed</th>
-      <th>Region</th>
-    </tr>
-    <% 8.times do |index| %>
+      <% @facade.draft_board.each do |pick| %>
+        <tr>
+          <td><%= pick[:pick_number] %></td>
+          <td><%= pick[:drafter] %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="user-team">
+    <h4>My Teams</h4>
+    <table>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <th>Team</th>
+        <th>Seed</th>
+        <th>Region</th>
       </tr>
-    <% end %>
-  </table>
-</div>>
-<div class="teams-available">
-  <h4>Teams Available</h4>
-  <table>
-    <tr>
-      <th>Team</th>
-      <th>Seed</th>
-      <th>Region</th>
-    </tr>
-    <% @facade.teams_available.each do |team| %>
+      <% 8.times do |index| %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>>
+  <div class="teams-available">
+    <h4>Teams Available</h4>
+    <table>
       <tr>
-        <td><%= team.name %></td>
-        <td><%= team.seed %></td>
-        <td><%= team.region %></td>
-        <td><%= button_to "Draft", draft_team_path(team_id: team.id), method: :post %>
+        <th>Team</th>
+        <th>Seed</th>
+        <th>Region</th>
       </tr>
-    <% end %>
-  </table>
+      <% @facade.teams_available.each do |team| %>
+        <tr>
+          <td><%= team.name %></td>
+          <td><%= team.seed %></td>
+          <td><%= team.region %></td>
+          <td><%= button_to "Draft", draft_team_path(team_id: team.id), method: :post, class: 'btn-secondary' %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
