@@ -35,8 +35,9 @@
     <h3>News Feed:</h3>
     <% @facade.articles.each do |article| %>
     <div id=article_<%= article.id %>>
-      <%= link_to article.headline, article.url, class: "article-headline" %>
       <p class="article-published-on">News from: <%= article.published_on %></p>
+      <%= link_to article.headline, article.url, class: "article-headline" %>
+      <br>
       <br>
     </div>
     <% end %>
