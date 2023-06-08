@@ -1,12 +1,12 @@
 <div class="header">
-  <a class="head-logo" href="/">
+  <a class="head-logo" href="/users/dashboard">
     <%= image_tag ("/assets/hoop_logo.png"), id: "hoop-logo" %>
     <div id="head-content"> DRAFT MADNESS</div>
   </a>
   <ul class="right-links">
-    <li><%= link_to 'Dashboard', users_dashboard_path %></li>
-    <li><a href="#">Live Bracket</a></li>
-    <li><a href="#">Link Two</a></li>
-    <li><a class='logout' href="#">Logout</a></li>
+    <li><%= button_to 'Dashboard', users_dashboard_path, class: "btn-secondary" %></li>
+    <%# <li><a href="#">Live Bracket</a></li>
+    <li><a href="#">Link Two</a></li> %>
+    <li><%= button_to 'logout', sessions_logout_path, method: :delete, class: "btn-secondary" %></li>
   </ul>
 </div>
