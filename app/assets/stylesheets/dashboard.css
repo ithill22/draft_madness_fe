@@ -1,3 +1,8 @@
 .td-primary {
   text-align: left;
 }
+
+.article-headline {
+  color: #ae662c;
+  text-decoration: underline;
+}
