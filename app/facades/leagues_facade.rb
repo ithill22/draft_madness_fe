@@ -30,6 +30,11 @@ class LeaguesFacade
     DateTime.parse(draft_time) if draft_time.present?
   end
 
+  def league_draft_date
+    draft_date = league_data[:data][:attributes][:draft_date]
+    Date.parse(draft_date) if draft_date.present?
+  end
+
   def user_name(user_id)
     user_data = service.get_one_user(user_id)
     user_data[:data][:attributes][:name]

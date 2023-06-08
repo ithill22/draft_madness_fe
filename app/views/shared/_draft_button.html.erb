@@ -1,4 +1,4 @@
-<% if @facade.league_draft_time && Time.current > @facade.league_draft_time - 30.minutes %>
+<% if @facade.league_draft_date == Date.today && @facade.league_draft_time && Time.current > @facade.league_draft_time - 30.minutes %>
   <%= button_to "Enter Draft Room", league_draft_path(@facade.league_id), method: :get, class: 'draft-button-enabled' %>
 <% else %>
   <%= button_to "Enter Draft Room", league_draft_path(@facade.league_id), method: :get, class: 'draft-button-disabled', disabled: true %>
