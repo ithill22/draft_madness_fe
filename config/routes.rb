@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/sessions', to: 'sessions#create'
   get '/auth/:provider/callback', to: 'users#create'
   get '/users/dashboard', to: 'users#show'
+  delete '/logout', to: 'sessions#destroy'
 end
