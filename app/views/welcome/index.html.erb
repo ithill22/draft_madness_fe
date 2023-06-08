@@ -1,1 +1,8 @@
-<%= button_to "Sign Up", new_user_path, method: :get %>
+<div class="title-page">
+  <%= image_tag ("/assets/title_image.png"), class: "title-image" %>
+
+  <a class="google-oauth-link" href="/auth/google_oauth2">
+    <%= image_tag ('/assets/google_logo_on_black.png'), class: 'google-login-logo' %>
+    <span>Login with Google</span>
+  </a>
+</div>

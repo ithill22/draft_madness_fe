@@ -1,0 +1,51 @@
+.instruction {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.checkboxes {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.league-name {
+  background-color: #646260;
+  padding: 16px;
+  border-radius: 5px;
+}
+
+.league-input-label {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.time-select {
+  background-color: #646260;
+  padding: 16px;
+  border-radius: 5px;
+}
+
+select#_day_1i {
+  background-color: #1d1c21;
+  color: #ae662c;
+  border: 1px solid #ae662c;
+  border-radius: 5px;
+}
+
+select#_day_2i {
+  background-color: #1d1c21;
+  color: #ae662c;
+  border: 1px solid #ae662c;
+  border-radius: 5px;
+}
+
+select#_day_3i {
+  background-color: #1d1c21;
+  color: #ae662c;
+  border: 1px solid #ae662c;
+  border-radius: 5px;
+}

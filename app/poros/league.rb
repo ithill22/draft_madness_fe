@@ -12,4 +12,22 @@ class League
     @draft_date = league_data[:attributes][:draft_date]
     @manager_id = league_data[:attributes][:manager_id]
   end
+
+  def manager_name
+    user_details[:data][:attributes][:name]
+  end
+
+  def format_time
+    @draft_time.to_strftime('%I:%M %p')
+  end
+
+  private
+
+  def service
+    @_service ||= DraftMadnessService.new
+  end
+
+  def user_details
+    @_user_details ||= service.get_one_user(@manager_id)
+  end
 end
