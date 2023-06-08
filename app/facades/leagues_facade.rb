@@ -27,7 +27,7 @@ class LeaguesFacade
 
   def league_draft_time
     draft_time = league_data[:data][:attributes][:draft_time]
-    DateTime.parse(draft_time) if draft_time.present?
+    Time.parse(draft_time) if draft_time.present?
   end
 
   def league_draft_date
