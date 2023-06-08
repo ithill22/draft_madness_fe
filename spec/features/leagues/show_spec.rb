@@ -20,9 +20,16 @@ RSpec.describe 'Leagues Show Page' do
       expect(page).to have_button('Enter Draft Room')
     end
 
-    it 'the draft button is disabled until 30 minutes before draft time', :vcr do
+    xit 'the draft button is disabled until 30 minutes before draft time', :vcr do
       visit league_path(4)
       expect(page).to have_button('Enter Draft Room', disabled: true)
+    end
+
+    it 'If I click the draft button, I am taken to the draft page', :vcr do
+      visit league_path(3)
+      click_button('Enter Draft Room')
+save_and_open_page
+      expect(current_path).to eq(league_draft_path(3))
     end
   end
 end

@@ -35,8 +35,20 @@ class DraftMadnessService
     get_url("/api/v0/leagues/#{league_id}")
   end
 
-  def get_roster_teams(roster_id)
-    get_url("/api/v0/user_leagues/#{roster_id}/roster_teams")
+  def create_roster_team(pick_details)
+    pick_post_url("/api/v0/roster_teams", pick_details)
+  end
+
+  def get_roster_teams(user_league_id)
+    get_url("/api/v0/user_leagues/#{user_league_id}/roster_teams")
+  end
+
+  def get_one_team(team_id)
+    get_url("/api/v0/teams/#{team_id}")
+  end
+
+  def get_all_teams
+    get_url('/api/v0/teams')
   end
 
   private
@@ -54,6 +66,10 @@ class DraftMadnessService
   def ul_post_url(url, ul_details)
     response = conn.post(url, user_league: {league_id: ul_details[:league_id], user_id: ul_details[:user_id]}, header: { 'CONTENT_TYPE' => 'application/json' })
     JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def pick_post_url(url, pick_details)
+    response = conn.post(url, roster_teams: {user_league_id: pick_details[:user_league_id], api_team_id: pick_details[:api_team_id]}, header: { 'CONTENT_TYPE' => 'application/json' })
   end
 
   def get_url(url)

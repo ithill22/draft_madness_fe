@@ -1,5 +1,8 @@
 class RosterTeam
-  attr_reader :id, :user_league_id, :api_team_id, :score
+  attr_reader :id, 
+              :user_league_id,
+              :api_team_id,
+              :score
 
   def initialize(data)
     @id = data[:id]

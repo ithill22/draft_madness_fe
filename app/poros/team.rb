@@ -1,10 +1,15 @@
 class Team
-  attr_reader :id, :name, :seed, :region
+  attr_reader :id,
+              :type,
+              :name,
+              :region,
+              :seed
 
   def initialize(data)
     @id = data[:id]
+    @type = data[:type]
     @name = data[:attributes][:name]
-    @seed = data[:attributes][:seed]
     @region = data[:attributes][:region]
+    @seed = data[:attributes][:seed]
   end
 end

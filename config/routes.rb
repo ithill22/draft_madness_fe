@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/sessions', to: 'sessions#create'
   delete 'sessions/logout', to: 'sessions#destroy'
   get '/users/dashboard', to: 'users#show'
+  post '/draft_team', to: 'draft_facade#draft_team', as: 'draft_team'
 
   resources :users, only: %i[create]
   resources :leagues, only: %i[new create show] do
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
 
   resources :user_leagues, only: %i[show]
   get '/user_leagues', to: 'user_leagues#create'
+
 end
