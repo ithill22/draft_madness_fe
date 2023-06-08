@@ -1,9 +1,11 @@
-<h3><%= @facade.league_name %></h3>
-<br>
-<h4>Leaderboard</h4>
-<li>
-  <% @facade.league_rosters.each do |roster| %>
-    <ul><%= link_to "#{@facade.user_name(roster.user_id)}'s Roster", user_league_path(roster) %></ul>
-  <% end %>
-</li>
-<%= render 'shared/draft_button' %>
+<div class='page'>
+  <h3><%= @facade.league_name %></h3>
+  <br>
+  <h4>Leaderboard</h4>
+  <li>
+    <% @facade.league_rosters.each do |roster| %>
+      <ul><%= link_to "#{@facade.user_name(roster.user_id)}'s Roster", user_league_path(roster), class: 'link-secondary' %></ul>
+    <% end %>
+  </li>
+  <%= render 'shared/draft_button' %>
+</div>

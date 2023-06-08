@@ -1,0 +1,21 @@
+.draft-button-enabled {
+  background-color: #33c323;
+  color: #1d1c21;
+  border: 2px solid #646260;
+  border-radius: 5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  margin: 16px;
+}
+
+.draft-button-disabled {
+  background-color: #1d1c21;
+  color: #646260;
+  border: 2px solid #646260;
+  border-radius: 5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  margin: 16px;
+}
