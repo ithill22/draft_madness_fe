@@ -28,7 +28,6 @@ class LeaguesFacade
   def roster_teams_scores(roster_id)
     roster_teams = roster_teams_data(roster_id)[:data].map { |roster_team| RosterTeam.new(roster_team) }
     roster_teams.sum do |roster_team|
-      require 'pry'; binding.pry
       roster_team.score
     end
   end
