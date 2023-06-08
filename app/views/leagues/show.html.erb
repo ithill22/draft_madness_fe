@@ -13,10 +13,10 @@
     <tbody>
       <% i = 1 %>
       <% @facade.league_rosters.each do |roster| %>
-        <tr>
+        <tr id="roster_<%= roster.user_id %>">
           <td class='td-number'><%= i %></td>
           <td class='td-primary'><%= link_to "#{@facade.user_name(roster.user_id)}'s Roster", user_league_path(roster), class: 'link-secondary' %></td>
-          <td>#</td>
+          <td class='td-number'><%= @facade.roster_teams_scores(roster.id) %></td>
           <% i += 1 %>
         </tr>
       <% end %>

@@ -25,6 +25,14 @@ class LeaguesFacade
     all_ul_data[:data].map { |roster_data| UserLeague.new(roster_data) }
   end
 
+  def roster_teams_scores(roster_id)
+    roster_teams = roster_teams_data(roster_id)[:data].map { |roster_team| RosterTeam.new(roster_team) }
+    roster_teams.sum do |roster_team|
+      require 'pry'; binding.pry
+      roster_team.score
+    end
+  end
+
   def league_draft_time
     draft_time = league_data[:data][:attributes][:draft_time]
     Time.parse(draft_time) if draft_time.present?
@@ -55,5 +63,9 @@ class LeaguesFacade
 
   def league_data
     @_league_data ||= service.get_league_info(@id)
+  end
+
+  def roster_teams_data(roster_id)
+    @_roster_teams_data ||= service.get_roster_teams(roster_id)
   end
 end
