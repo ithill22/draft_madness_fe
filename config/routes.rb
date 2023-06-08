@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/sessions', to: 'sessions#create'
   get '/auth/:provider/callback', to: 'users#create'
   get '/users/dashboard', to: 'users#show'
+  post '/draft_team', to: 'draft_facade#draft_team', as: 'draft_team'
 end

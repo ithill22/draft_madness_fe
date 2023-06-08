@@ -23,7 +23,9 @@ class LeaguesController < ApplicationController
     @facade = LeaguesFacade.new(params[:id])
   end
 
-  def draft; end
+  def draft
+    @facade = DraftFacade.new(params[:league_id])
+  end
 
   private
 
