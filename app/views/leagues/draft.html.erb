@@ -13,7 +13,7 @@
       <tr>
         <td><%= pick[:pick_number] %></td>
         <td><%= pick[:drafter] %></td>
-        <td><%= pick[:team_drafted] %></td>
+        <td></td>
       </tr>
     <% end %>
   </table>
@@ -26,11 +26,11 @@
       <th>Seed</th>
       <th>Region</th>
     </tr>
-    <% @facade.user_roster.each do |team| %>
+    <% 8.times do |index| %>
       <tr>
-        <td><%= team.name %></td>
-        <td><%= team.seed %></td>
-        <td><%= team.region %></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
     <% end %>
   </table>

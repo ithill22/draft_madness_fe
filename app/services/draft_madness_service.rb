@@ -39,6 +39,18 @@ class DraftMadnessService
     pick_post_url("/api/v0/roster_teams", pick_details)
   end
 
+  def get_roster_teams(user_league_id)
+    get_url("/api/v0/user_leagues/#{user_league_id}/roster_teams")
+  end
+
+  def get_one_team(team_id)
+    get_url("/api/v0/teams/#{team_id}")
+  end
+
+  def get_all_teams
+    get_url('/api/v0/teams')
+  end
+
   private
 
   def post_url(url, user_details)

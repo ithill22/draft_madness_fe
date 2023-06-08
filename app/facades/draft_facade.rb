@@ -11,11 +11,11 @@ class DraftFacade
     randomized_order.map.with_index do |user, index|
       pick_number = index + 1
       drafter = user[:data][:attributes][:name]
-      team_drafter = selected_team(user[:data][:attributes][:id]) || ""
+      # team_drafted = selected_team(user[:data][:attributes][:id], pick_number)
 
       round = (pick_number - 1) / 8 + 1
 
-      { pick_number: pick_number, drafter: drafter, team_drafter: team_drafter, round: round}
+      { pick_number: pick_number, drafter: drafter, round: round}
     end
   end
 
@@ -28,16 +28,33 @@ class DraftFacade
   end
 
   def current_pick
-    draft_board[0]
+    draft_board[0][:drafter]
   end
 
   def next_pick
-    draft_board[1]
+    draft_board[1][:drafter]
   end
 
-  def user_roster
-    selected_user = league_users.find { |user| user[:data][:attributes][:id] == @user_id }
-    roster = selected_user
+  # def user_roster(user_id)
+  #   user_league = fetch_user_league(@id, user_id)
+  #   return empty_user_roster if user_league.nil?
+    
+  #   roster_teams = service.get_roster_teams(user_league[:data][:id])
+
+  #   if roster_teams[:data].empty?
+  #     empty_user_roster
+  #   else
+  #     roster_teams[:data].map do |roster_team|
+  #       team = fetch_team(roster_team[:attributes][:api_team_id])
+  #   end
+  #   end
+  # end
+
+  def teams_available
+    all_teams = service.get_all_teams
+    all_teams[:data].map do |team|
+      Team.new(team)
+    end
   end
 
   private
@@ -90,5 +107,15 @@ class DraftFacade
     service.get_roster_teams(user_league_id)
   end
 
+  def fetch_team(team_id)
+    service.get_one_team(team_id)
+  end
 
+  def fetch_all_teams
+    service.get_all_teams
+  end
+
+  # def selected_team(user_id, pick_number)
+  #   selected_teams = 
+  # end
 end

@@ -29,7 +29,8 @@ RSpec.describe 'Leagues Show Page' do
       visit league_path(3)
       click_button('Enter Draft Room')
 
-      expect(current_path).to eq(draft_league_path(3))
+      expect(current_path).to eq(league_draft_path(3))
+      save_and_open_page
     end
   end
 end
