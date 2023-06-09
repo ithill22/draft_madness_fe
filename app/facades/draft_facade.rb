@@ -13,7 +13,7 @@ class DraftFacade
       drafter = user[:data][:attributes][:name]
       # team_drafted = selected_team(user[:data][:attributes][:id], pick_number)
 
-      { pick_number: pick_number, drafter: drafter}
+      { pick_number: pick_number, drafter: drafter }
     end
   end
 
