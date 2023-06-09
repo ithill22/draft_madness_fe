@@ -5,7 +5,7 @@ RSpec.describe 'Draft Page' do
     visit league_draft_path(3)
   end
 
-  describe 'As a user, when I visit the draft page', :vcr do
-    it 'I see the league name' do
-  end
+  # describe 'As a user, when I visit the draft page', :vcr do
+  #   it 'I see the league name' do
+  # end
 end
