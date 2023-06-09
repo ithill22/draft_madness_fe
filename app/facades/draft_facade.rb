@@ -13,9 +13,7 @@ class DraftFacade
       drafter = user[:data][:attributes][:name]
       # team_drafted = selected_team(user[:data][:attributes][:id], pick_number)
 
-      round = (pick_number - 1) / 8 + 1
-
-      { pick_number: pick_number, drafter: drafter, round: round}
+      { pick_number: pick_number, drafter: drafter}
     end
   end
 
@@ -82,20 +80,15 @@ class DraftFacade
   end
 
   def randomized_order
-    users = league_users.shuffle
-    total_teams = 64
-    picks_per_user = total_teams / users.count
+    users = league_users
+    draft_order = []
 
-    order = []
-
-    (1..picks_per_user).each do |pick|
-      if (pick - 1) % 8 < 4
-        users.each { |user| order << user }
-      else
-        users.reverse.each { |user| order << user }
-      end
+    4.times do
+      draft_order += users.shuffle # 1st8
+      draft_order += draft_order.last(8).reverse # 2nd8
     end
-    order
+    
+    draft_order
   end
 
   def fetch_user_league(user_id)
