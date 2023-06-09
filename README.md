@@ -75,7 +75,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Draft Madness is a Rails application that brings the excitement of March Madness to your fingertips. It allows users to participate in a thrilling fantasy game where they draft their own set of teams from the 64-team pool and earn points based on the multiplier of each team's seed.
+Draft Madness is a Rails application that brings the excitement of March Madness to your fingertips. It allows users to participate in a thrilling fantasy game where they draft their own set of teams from the 64-team pool and earn points based on the multiplier of each team's seed. Enjoy the excitement of March Madness with Draft Madness!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -115,6 +115,11 @@ To get a local copy up and running follow these simple example steps.
    ```
    rails db:{create,migrate}
    ```
+5. Now go to: https://github.com/ithill22/draft_madness_be and follow the Getting Started instructions in the README to start up the backend server.
+
+6. Once the backend server is running, in an additional window, go to http://localhost:8000 in your browser and enjoy the madness!
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -123,12 +128,9 @@ To get a local copy up and running follow these simple example steps.
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] list future refactors and potential future features
-
 See the [open issues](https://github.com/ithill22/draft_madness_fe/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
@@ -170,8 +172,6 @@ Distributed under the MIT License.
 * Back End: [![Github][Github]][project-be-gh-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
