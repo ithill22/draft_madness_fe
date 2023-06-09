@@ -19,7 +19,7 @@
           <% @facade.all_leagues_for_user.each do |league| %>
             <tr id="league_<%= league.id %>">
               <td class='td-primary'><%= link_to league.name, league_path(league.id), class: 'link-secondary' %></td>
-              <td><%= link_to "Roster", '#', class: 'btn-secondary' %></td>
+              <td><%= link_to "Roster", user_league_path, class: 'btn-secondary' %></td>
               <td><%= league.draft_time %></td>
               <td><%= league.draft_date %></td>
               <td><%= league.manager_name %></td>

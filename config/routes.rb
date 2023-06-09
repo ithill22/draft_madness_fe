@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get '/draft', to: 'leagues#draft'
   end
 
-  resources :user_leagues, only: %i[show]
+  # resources :user_leagues, only: %i[show]
   get '/user_leagues', to: 'user_leagues#create'
-
+  get '/user_league', to: 'user_leagues#show'
 end

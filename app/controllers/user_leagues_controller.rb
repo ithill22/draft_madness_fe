@@ -1,6 +1,7 @@
 class UserLeaguesController < ApplicationController
-  def new 
-  end
+  def show; end
+  
+  def new; end
 
   def create
     if params[:participants]
