@@ -115,7 +115,7 @@ To get a local copy up and running follow these simple example steps.
    ```
    rails db:{create,migrate}
    ```
-5. Now go to: https://github.com/ithill22/draft_madness_be and follow the Getting Started instructions in the README to start up the backend server.
+5. Now go to: https://github.com/ithill22/draft_madness_be#readme and follow the Getting Started instructions in the README to start up the backend server.
 
 6. Once the backend server is running, in an additional window, go to http://localhost:8000 in your browser and enjoy the madness!
 
